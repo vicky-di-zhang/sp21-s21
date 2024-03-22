@@ -39,7 +39,7 @@ public class DebugExercise2 {
      * a[i] and b[i]. For example, if a = {1, -10, 3}
      * and b = {0, 20, 5}, this function will return {1, 20, 5}.
      * */
-    public static int[] arrayMax(int[] a, int[] b) {
+ /*   public static int[] arrayMax(int[] a, int[] b) {
         if (a.length != b.length) {
             System.out.println("ERROR! Arrays don't match");
             return null;
@@ -52,9 +52,27 @@ public class DebugExercise2 {
 
         return returnArray;
     }
+  */
 
+    public static int[] arrayMax(int[] a, int[] b) {
+        if (a.length != b.length) {
+            System.out.println("ERROR! Arrays don't match");
+            return null;
+        }
+
+        int[] maxArray = new int[a.length];
+        for(int i = 0; i < a.length; i++) {
+            if (a[i] <= b[i]) {
+                maxArray[i] = b[i];
+            } else {
+                maxArray[i] = a[i];
+            }
+        }
+        return maxArray;
+
+    }
     /** Returns the sum of all elements in x. */
-    public static int arraySum(int[] x) {
+    /*public static int arraySum(int[] x) {
         int i = 0;
         int sum = 0;
         while (i < x.length) {
@@ -62,6 +80,15 @@ public class DebugExercise2 {
             i = i + 1;
         }
         return sum;
+    }
+    */
+    /** Returns the sum of all elements in x. */
+    public static int arraySum(int[] x) {
+        int sumResult = 0;
+        for (int i : x) {
+            sumResult += i;
+        }
+        return sumResult;
     }
 
     /** Returns the sum of the element-wise max of a and b.

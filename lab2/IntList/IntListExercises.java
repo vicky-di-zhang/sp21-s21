@@ -1,5 +1,7 @@
 package IntList;
 
+import jh61b.junit.In;
+
 public class IntListExercises {
 
     /**
@@ -13,6 +15,9 @@ public class IntListExercises {
         while (head.rest != null) {
             head.first += c;
             head = head.rest;
+        }
+        if (head != null) {
+            head.first += c;
         }
     }
 
@@ -33,7 +38,9 @@ public class IntListExercises {
         }
     }
 
-    /** Returns the max value in the IntList starting at L. */
+    /**
+     * Returns the max value in the IntList starting at L.
+     */
     public static int max(IntList L) {
         int max = L.first;
         IntList p = L.rest;
@@ -46,12 +53,13 @@ public class IntListExercises {
         return max;
     }
 
-    /** Returns true if the last digit of x is equal to
-     *  the first digit of x.
+    /**
+     * Returns true if the last digit of x is equal to
+     * the first digit of x.
      */
     public static boolean firstDigitEqualsLastDigit(int x) {
         int lastDigit = x % 10;
-        while (x > 10) {
+        while (x >= 10) {
             x = x / 10;
         }
         int firstDigit = x % 10;
@@ -67,16 +75,17 @@ public class IntListExercises {
      */
     public static boolean squarePrimes(IntList lst) {
         // Base Case: we have reached the end of the list
-        if (lst == null) {
-            return false;
+        boolean hatPrime = false;
+        IntList check = lst;
+
+        while (check != null) {
+            if (Primes.isPrime(check.first)) {
+                check.first *= check.first;
+                hatPrime = true;
+            }
+            check = check.rest;
         }
+        return hatPrime;
 
-        boolean currElemIsPrime = Primes.isPrime(lst.first);
-
-        if (currElemIsPrime) {
-            lst.first *= lst.first;
-        }
-
-        return currElemIsPrime || squarePrimes(lst.rest);
     }
 }
